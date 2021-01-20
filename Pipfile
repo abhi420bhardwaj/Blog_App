@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "==2.1.7"
 requests = "*"
+gunicorn = "==19.9.0"
 
 [dev-packages]
 
