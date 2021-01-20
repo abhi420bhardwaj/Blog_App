@@ -15,7 +15,7 @@
         <td>{{post.title}}</td>
         <td>{{post.body}}</td>
         <td><button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'edit_post' user_id=user.id post_id=post.id  %}'">Edit</button>
-          <t> <button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'delete_post' post_id=post.id %}'">Delete</button>
+          <t> <button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'delete_post' user_id=user.id post_id=post.id %}'">Delete</button>
         </td>
      </tr>
   {% endfor %}

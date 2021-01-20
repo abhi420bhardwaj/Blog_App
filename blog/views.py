@@ -39,9 +39,9 @@ def createPosts(request,user_id):
 
     return render(request , 'edit_post.html',{'form':form})
 
-def deletePosts(request,post_id):
+def deletePosts(request,user_id , post_id):
     deleting_post = Post.objects.get(id=post_id)
     if request.method == "POST":
         deleting_post.delete()
-        return redirect('home')
+        return redirect('post',user_id=user_id)
     return render(request , 'post_confirm_delete.html',{})

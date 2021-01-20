@@ -3,8 +3,9 @@ from .views import listUsers , listPosts , editPosts , createPosts , deletePosts
 
 urlpatterns = [
     path('',listUsers,name = 'home'),
-    path('<int:user_id>',listPosts , name = 'post'),
-    path('<int:user_id>/<int:post_id>',editPosts , name = 'edit_post'),
-    path('new/<int:user_id>',createPosts , name = 'create_post'),
-    path('delete/<int:post_id>',deletePosts , name = 'delete_post'),
+    path('users',listUsers,name = 'home'),
+    path('user/<int:user_id>',listPosts , name = 'post'),
+    path('user/<int:user_id>/post/<int:post_id>/edit',editPosts , name = 'edit_post'),
+    path('user/<int:user_id>/new',createPosts , name = 'create_post'),
+    path('user/<int:user_id>/post/<int:post_id>/delete',deletePosts , name = 'delete_post'),
 ]
