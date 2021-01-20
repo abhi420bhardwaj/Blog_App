@@ -1,0 +1,11 @@
+h1{
+  text-align:center;
+  color:red;
+  margin-bottom:70px
+}
+
+.user_table{
+  border : 2px solid black;
+  width : 70%;
+  margin:auto;
+}

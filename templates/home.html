@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 id = "user_list"> Displaying the list of all users </h1>
+{% if users %}
+<div class = "user_table">
+  <table >
+    <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Website</th>
+      <th>Actions</th>
+    </thead>
+  {% for user in users %}
+    <tr>
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.address}}</td>
+      <td>{{user.phone}}</td>
+      <td><a href = "" > {{user.website}} </a> </td>
+      <td> <button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'post' user_id=user.id %}'"> View Posts</button></td>
+    </tr>
+    </div>
+
+   {% endfor %}
+{% endif %}
+
+{% endblock content %}
