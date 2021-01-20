@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h1 id = "user_list"> Displaying the list of all users </h1>
+<h1 id = "user_list"> Displaying the list of all Users </h1>
 {% if users %}
 <div class = "user_table">
-  <table >
+  <table class="table table-bordered" >
     <thead>
       <th>Name</th>
       <th>Email</th>
@@ -24,6 +24,13 @@
       <td> <button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'post' user_id=user.id %}'"> View Posts</button></td>
     </tr>
     </div>
+    <style>
+      h1{
+        text-align:center;
+        color:red;
+        margin-bottom:100px
+      }
+    </style>
 
    {% endfor %}
 {% endif %}

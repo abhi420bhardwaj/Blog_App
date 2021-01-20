@@ -22,6 +22,7 @@ def editPosts(request,user_id,post_id):
         edited_post.author = User.objects.get(id = user_id )
         edited_post.id = post_id
         edited_post.save()
+        return redirect('post',user_id=user_id)
 
 
     return render(request , 'edit_post.html',{'form':form})
@@ -33,6 +34,7 @@ def createPosts(request,user_id):
         new_post = form.save(commit=False)
         new_post.author = User.objects.get(id = user_id )
         new_post.save()
+        return redirect('post',user_id=user_id)
 
 
     return render(request , 'edit_post.html',{'form':form})
@@ -41,4 +43,5 @@ def deletePosts(request,post_id):
     deleting_post = Post.objects.get(id=post_id)
     if request.method == "POST":
         deleting_post.delete()
+        return redirect('home')
     return render(request , 'post_confirm_delete.html',{})

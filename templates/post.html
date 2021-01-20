@@ -4,8 +4,7 @@
 
 <h1 id = "user_list"> Displaying the list of all posts of user : {{user.name}} </h1>
 {% if posts %}
-  <div class = "user_table">
-    <table >
+    <table class="table table-bordered" >
       <thead>
         <th>Title</th>
         <th>Body</th>
@@ -19,11 +18,19 @@
           <t> <button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'delete_post' post_id=post.id %}'">Delete</button>
         </td>
      </tr>
-  </div>
-
   {% endfor %}
 
-{% endif %}
+  {% else %}
+  <h2> No Posts for the user {{user.name}} to display </h2>
 
-<a href = "{% url 'create_post' user_id=user.id %}"> Add new Post </a>
+{% endif %}
+<button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'create_post' user_id=user.id %}'">Add New Post</button>
+
+<style>
+  h1,h2{
+    text-align:center;
+    color:red;
+    margin-bottom:100px
+  }
+</style>
 {% endblock content %}
