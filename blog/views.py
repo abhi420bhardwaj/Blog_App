@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from .models import User,Post
 from .forms import PostForm
 
@@ -15,15 +15,17 @@ def listPosts(request,user_id):
     return render(request,'post.html',{'posts':post,'user':user})
 
 def editPosts(request,user_id,post_id):
-    obj = Post.objects.get(id=post_id)
-    form = PostForm(request.POST,instance=obj)
-    if form.is_valid():
-        edited_post = form.save(commit=False)
-        edited_post.author = User.objects.get(id = user_id )
-        edited_post.id = post_id
-        edited_post.save()
-        return redirect('post',user_id=user_id)
-
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            edited_post = form.save(commit=False)
+            edited_post.author = User.objects.get(id = user_id )
+            edited_post.id = post_id
+            edited_post.save()
+            return redirect('post',user_id=user_id)
+    else:
+        obj = get_object_or_404(Post, id = post_id)
+        form = PostForm(instance=obj)
 
     return render(request , 'edit_post.html',{'form':form})
 
