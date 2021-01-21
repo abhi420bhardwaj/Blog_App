@@ -20,7 +20,7 @@
       <td>{{user.email}}</td>
       <td>{{user.address}}</td>
       <td>{{user.phone}}</td>
-      <td><a href = "" > {{user.website}} </a> </td>
+      <td><a href = "http://www.{{user.website}}" > {{user.website}} </a> </td>
       <td> <button type = "submit" class = "btn btn-primary" onclick = "location.href= '{% url 'post' user_id=user.id %}'"> View Posts</button></td>
     </tr>
     </div>

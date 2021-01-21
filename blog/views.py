@@ -15,8 +15,8 @@ def listPosts(request,user_id):
     return render(request,'post.html',{'posts':post,'user':user})
 
 def editPosts(request,user_id,post_id):
-
-    form = PostForm(request.POST)
+    obj = Post.objects.get(id=post_id)
+    form = PostForm(request.POST,instance=obj)
     if form.is_valid():
         edited_post = form.save(commit=False)
         edited_post.author = User.objects.get(id = user_id )
